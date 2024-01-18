@@ -1,0 +1,23 @@
+<h1>{{btnTitulo}}</h1>
+
+<form [formGroup]= "departamentoform" (ngSubmit)="submit()" #formDit="ngForm">
+    <input type="hidden" formControlName = "id">
+
+
+<div class="input-box">
+    <label for="sigla">Sigla:</label>
+    <input type="text" formControlName= "sigla" placeholder="insira a sigla" required>
+</div>
+
+<div class="input-box">
+    <label for="name">Nome:</label>
+    <input type="text" formControlName= "name" placeholder="insira o nome" required>
+</div>
+
+<div class="btn-box">
+    <button type="submit" [disabled]="!departamentoform.valid">{{btnAcao}}</button>
+    <button routerLink="">Voltar</button>
+</div>
+
+<form>
+

@@ -1,0 +1,37 @@
+<div class="container-box" *ngIf="funcionariosGeral != null && funcionariosGeral.length > 0">
+    <div class="input-box">
+        <input type="" placeholder="Procurar um funcionário" (input)="search($event)">
+    </div>
+    <button routerLink="/funcionarios/cadastro">Cadastrar</button>
+</div>
+
+<div class="warning" *ngIf="funcionariosGeral == null || funcionariosGeral.length === 0">
+    Ainda não há funcionários cadastrados. <br /> 
+    <button routerLink="/funcionarios/cadastro" style="margin-top: 5px;">Cadastrar</button>
+</div>
+
+<table class="table" *ngIf="funcionariosGeral != null && funcionariosGeral.length > 0">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Rg</th>
+            <th>Departamento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let funcionario of funcionarios">
+        <tr>
+            <td>{{funcionario.id}}</td>
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.rg}}</td>
+            <td>{{funcionario.departamento.name}}</td>
+            <td>
+                <button routerLink="/funcionarios/editar/{{funcionario.id}}">Editar</button>
+                <button class="delete" (click)="excluir(funcionario.id ??0)">Excluir</button>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>

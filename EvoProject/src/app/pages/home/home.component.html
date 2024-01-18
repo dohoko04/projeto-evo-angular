@@ -1,0 +1,34 @@
+<div class="container-box" *ngIf="departamentoGeral != null && departamentoGeral.length > 0">
+    <div class="input-box">
+        <input type="text" placeholder="Pocurar um departamento" (input)="search($event)"  >
+    </div>
+    <button routerLink="/cadastro">Cadastrar</button>
+</div>
+
+<div class="warning" *ngIf="departamentoGeral == null || departamentoGeral.length === 0">
+    Ainda não há departamentos cadastrados. <br /> 
+    <button routerLink="/cadastro" style="margin-top: 5px;">Cadastrar</button>
+</div>
+
+<table class="table" *ngIf="departamentoGeral != null && departamentoGeral.length > 0">    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Sigla</th>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let departamento of departamentos">
+            <td>{{departamento.id}}</td>
+            <td>{{departamento.sigla}}</td>
+            <td>{{departamento.name}}</td>
+            <td>
+                <button routerLink="/editar/{{departamento.id}}">Editar</button>
+                <button [routerLink]="['/funcionarios']">Funcionários</button>
+                <button class= "delete" (click)="excluir(departamento.id ??0)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
